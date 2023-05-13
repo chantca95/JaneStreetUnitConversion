@@ -96,7 +96,9 @@ float answerQuery(string query, unordered_map<string, Node*> &mp) {
             }
         }
     }
-    
+    // if you reached here, it means this query is impossible.
+    // we should add an Edge with value 0, so that future attempts will shortcircuit
+    mp[fromUnit]->addEdge(toUnit, 0);
     return 0;
 }
 
@@ -124,6 +126,10 @@ int main(int argc, const char * argv[]) {
     cout << answerQuery(query4, mp) << endl;
     string query5 = "2 hr sec";
     cout << answerQuery(query5, mp) << endl;
+    string query6 = "2 m hr";
+    cout << answerQuery(query6, mp) << endl;
+    string query7 = "0.2 m hr";
+    cout << answerQuery(query7, mp) << endl;
     
     return 0;
 }
